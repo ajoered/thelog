@@ -1,31 +1,26 @@
- <div class="container">
-  <div class="row center-align intro-buttons-row">
-      <div class="col s12 m8 l8 offset-m2 offset-l2 typewriter">
-        <h2>Welcome to the Log.</h2>
-      </div>
-      <div class="col s12 m6 l6 offset-m3 offset-l3 margin-10">
-        <a href="/users/sign_in" class="btn-large waves-effect waves-teal blue-grey darken-4" type="submit" name="action">Login
-          <i class="material-icons right">perm_identity</i>
-        </a>
-      </div>
-      <div class="col s12 m6 l6 offset-m3 offset-l3">
-        <a href="#modal1" class="btn-large waves-effect waves-teal blue-grey darken-4" type="submit" name="action">Contact US
-          <i class="material-icons right">email</i>
-        </a>
-        <div id="modal1" class="modal">
-          <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-          </div>
-        </div>
-      </div>
+<% if user_signed_in? %>
+<!-- <div class="container">
+
+    <div class="col m8" style="">
+<h1>hello</h1>
     </div>
-</div>
+    <div class="col m4" id="map">
 
-<!-- Modal Trigger -->
-<!-- <a class="waves-effect waves-light btn" href="#modal1">Modal</a> -->
+    </div>
 
-<!-- Modal Structure -->
+</div> -->
+
+
+    <div class="col m8" id="map">
+    </div>
+
+
+
+
+<% else %>
+<%= render "home/signouthome" %>
+<% end %>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwMfMENTf8PU8inF6lG48nSv3spe0g5-M&callback=initMap">
+</script>

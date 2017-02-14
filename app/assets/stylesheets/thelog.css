@@ -1,11 +1,13 @@
 html {
-  background: url(http://elementsimaging.com.au/wp-content/uploads/galleries/post-241/full/Bream%20Under%20a%20Breaking%20Wave%20-%20W.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  font-family: 'Anonymous Pro', monospace;
+
 }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Anonymous Pro', monospace; }
+
+#map { height: 100%; }
 
 .intro-buttons-row {
   padding-top: 160px;
