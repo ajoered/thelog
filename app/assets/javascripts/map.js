@@ -4,6 +4,7 @@ function initMap() {
     center: {lat: -34.397, lng: 150.644},
     zoom: 6
   });
+
   var infoWindow = new google.maps.InfoWindow({map: map});
 
   // Try HTML5 geolocation.
@@ -13,6 +14,14 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+
+      marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: pos
+      });
+      marker.addListener('click', displayModal);
 
       infoWindow.setPosition(pos);
       infoWindow.setContent('You are here');
@@ -31,4 +40,20 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setContent(browserHasGeolocation ?
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
+}
+
+function displayModal() {
+  swal({
+  title: 'Auto close alert!',
+  text: 'I will close in 2 seconds.',
+  timer: 2000
+}).then(
+  function () {},
+  // handling the promise rejection
+  function (dismiss) {
+    if (dismiss === 'timer') {
+      console.log('I was closed by the timer')
+    }
+  }
+)
 }
