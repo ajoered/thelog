@@ -25,17 +25,17 @@ function initMap() {
 
       map.setCenter(pos);
     }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
+      handleLocationError(true, map.getCenter());
     });
   } else {
     // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
+    handleLocationError(false, marker, map.getCenter());
   }
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
+function handleLocationError(browserHasGeolocation, marker, pos) {
+  marker.setPosition(pos);
+  marker.setContent(browserHasGeolocation ?
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
 }
@@ -54,5 +54,11 @@ function getInfo() {
 }
 
 function consoleLog(response) {
-  console.log(response)
+  var $response=$(response);
+  console.log($response);
+
+ //Query the jQuery object for the values
+ var oneval = $response.filter('date').text();
+
+  console.log(oneval);
 }
