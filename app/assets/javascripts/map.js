@@ -1,11 +1,10 @@
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
+    center: {lat: 34.052, lng: -118.243},
     zoom: 6
   });
 
-  var infoWindow = new google.maps.InfoWindow({map: map});
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -21,12 +20,12 @@ function initMap() {
         animation: google.maps.Animation.DROP,
         position: pos
       });
+
       marker.addListener('click', function() {
 		      $('#myModal').modal('open')
+          document.getElementById('title').innerHTML = "Venice";
     });
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('You are here');
       map.setCenter(pos);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
