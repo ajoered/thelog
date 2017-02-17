@@ -1,4 +1,4 @@
-
+var pos;
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 34.052, lng: -118.243},
@@ -9,7 +9,7 @@ function initMap() {
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
+      pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
@@ -21,10 +21,7 @@ function initMap() {
         position: pos
       });
 
-      marker.addListener('click', function() {
-		      $('#myModal').modal('open')
-          document.getElementById('title').innerHTML = "Venice";
-    });
+      marker.addListener('click', getInfo)
 
       map.setCenter(pos);
     }, function() {
@@ -41,4 +38,21 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setContent(browserHasGeolocation ?
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
+}
+
+function getInfo() {
+  var latlng = pos.lat + "," + pos.lng
+  $('#myModal').modal('open')
+  document.getElementById('title').innerHTML = "Venice";
+  var latlng = pos.lat + "," + pos.lng
+  $.ajax({
+    type: "GET",
+    url: "http://api.worldweatheronline.com/premium/v1/marine.ashx?key=5153167ce5c24b0284e215756171402&format=xml&q=" + latlng,
+    success: consoleLog
+  });
+
+}
+
+function consoleLog(response) {
+  console.log(response)
 }
