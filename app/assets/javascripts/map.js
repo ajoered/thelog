@@ -54,6 +54,7 @@ function getInfo() {
 }
 
 function consoleLog(response) {
+  console.log(response);
   var $response=$(response);
   console.log($response);
 
