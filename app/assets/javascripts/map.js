@@ -60,6 +60,5 @@ function consoleLog(response) {
 
  //Query the jQuery object for the values
  var oneval = $response.filter('date').text();
-
   console.log(oneval);
 }

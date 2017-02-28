@@ -19,40 +19,6 @@
 
 </div>
 
-<ul id="slide-out" class="side-nav fixed">
-  <li>
-    <div class="userView">
-      <div class="background blue-grey darken-4">
-
-      </div>
-    <a href="#!user"><img class="circle" src="http://www.irishexaminer.com/images/social/icon-user-you.png"></a>
-    <a href="#!name"><span class="white-text name">Hello <%= current_user.email %>!</span></a>
-    <br>
-    </div>
-  </li>
-  <li class="search">
-      <input id="search" placeholder="  Search for a spot...">
-  </li>
-  <li class="no-padding">
-    <ul class="collapsible collapsible-accordion">
-      <li>
-        <a class="collapsible-header">My Spots<i class="material-icons">arrow_drop_down</i></a>
-        <div class="collapsible-body">
-          <ul>
-            <li><a href="#!">Chinese</a></li>
-            <li><a href="#myModal">Venice Pier</a></li>
-            <li><a href="#!">El Porto</a></li>
-            <li><a href="#!">Zuma</a></li>
-          </ul>
-        </div>
-      </li>
-        <li><%= link_to 'Sign out', destroy_user_session_path, method: 'DELETE' %></li>
-    </ul>
-  </li>
-</div>
-</ul>
-
-
 <% else %>
 <%= render "home/signouthome" %>
 <% end %>
