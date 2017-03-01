@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :spots, through: :entries
   has_many :spots
 
-
+  validates :name,  presence: true, length: { maximum: 50 }
 end

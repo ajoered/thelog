@@ -2,59 +2,63 @@
 <nav class=" blue-grey darken-4">
   <div class="nav-wrapper container">
     <a href="/" class="brand-logo center" style="font-family: 'Anonymous Pro', monospace;"><i class="material-icons">album</i>the Log</a>
+
       <% if user_signed_in? %>
-    <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="/profile">My Profile</a></li>
-      <li><%= link_to 'Sign out', destroy_user_session_path, method: 'DELETE' %></li>
-    </ul>
-    <ul class="side-nav" id="mobile-demo">
-      <li><a href="/profile">My Profile</a></li>
-      <li><%= link_to 'Sign out', destroy_user_session_path, method: 'DELETE' %></li>
-    </ul>
+
+        <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/profile"><%= current_user.name %></a></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, method: 'DELETE' %></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="/profile">My Profile</a></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, method: 'DELETE' %></li>
+        </ul>
+
+        <ul id="slide-out" class="side-nav fixed">
+          <li>
+            <div class="userView">
+              <div class="background blue-grey darken-4">
+
+              </div>
+            <a href="#!user"><img class="circle" src="http://www.irishexaminer.com/images/social/icon-user-you.png"></a>
+            <a href="/profile"><span class="white-text name">Hello <%= current_user.name %>!</span></a>
+            <br>
+            </div>
+          </li>
+          <li class="search">
+              <input id="search" placeholder="  Search for a spot...">
+          </li>
+          <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+              <li>
+                <a class="collapsible-header">My Spots<i class="material-icons">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <% current_user.spots.each do |spot| %>
+                    <li><a href="#myModal"><%= spot.name %></a></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="/profile">Map</a></li>
+              <li><a href="/profile"><%= current_user.name %></a></li>
+                <li class="blue-text"><%= link_to 'Sign out', destroy_user_session_path, method: 'DELETE', class: 'blue-text' %></li>
+            </ul>
+          </li>
+        </div>
+        </ul>
+
     <% else %>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="/users/sign_in">Login</a></li>
-    </ul>
-    <ul class="side-nav" id="mobile-demo">
-      <li><a href="/users/sign_in">Login</a></li>
-      <li><a href="/users/sign_in">Spots</a></li>
-    </ul>
+
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/users/sign_in">Login</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="/users/sign_in">Login</a></li>
+          <li><a href="/users/sign_in">Spots</a></li>
+        </ul>
     <% end %>
   </div>
 </nav>
 </div>
-
-<ul id="slide-out" class="side-nav fixed">
-  <li>
-    <div class="userView">
-      <div class="background blue-grey darken-4">
-
-      </div>
-    <a href="#!user"><img class="circle" src="http://www.irishexaminer.com/images/social/icon-user-you.png"></a>
-    <a href="#!name"><span class="white-text name">Hello <%= current_user.email %>!</span></a>
-    <br>
-    </div>
-  </li>
-  <li class="search">
-      <input id="search" placeholder="  Search for a spot...">
-  </li>
-  <li class="no-padding">
-    <ul class="collapsible collapsible-accordion">
-      <li>
-        <a class="collapsible-header">My Spots<i class="material-icons">arrow_drop_down</i></a>
-        <div class="collapsible-body">
-          <ul>
-            <% current_user.spots.each do |spot| %>
-            <li><a href="#myModal"><%= spot.name %></a></li>
-            <% end %>
-          </ul>
-        </div>
-      </li>
-      <li><a href="/profile">Map</a></li>
-      <li><a href="/profile">My Profile</a></li>
-        <li class="blue-text"><%= link_to 'Sign out', destroy_user_session_path, method: 'DELETE', class: 'blue-text' %></li>
-    </ul>
-  </li>
-</div>
-</ul>

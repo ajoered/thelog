@@ -54,11 +54,10 @@ function getInfo() {
 }
 
 function consoleLog(response) {
+  var time = response.getElementsByTagName('maxtempC')
+
+  console.log(time);
   console.log(response);
-  var $response=$(response);
-  console.log($response);
 
  //Query the jQuery object for the values
- var oneval = $response.filter('date').text();
-  console.log(oneval);
 }
